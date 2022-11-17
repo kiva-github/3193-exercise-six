@@ -1,14 +1,15 @@
 // context
 import { useAuthContext } from '../../hooks/useAuthContext'
 
-// styles
-import './Home.scss'
-
 export default function Home() {
   const { user } = useAuthContext()
+
   return (
-    <div>
-      <div>Welcome, {user.displayName}</div>
-    </div>
+    <>
+      <h3>Welcome, {user.displayName}!</h3><br/>
+      <h4>Account Details:</h4>
+      <p>Email: {user.email}</p>
+      <p>Membership ID: {user.uid.toUpperCase()}</p>
+    </>
   )
 }

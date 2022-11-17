@@ -16,7 +16,6 @@ export default function Navbar() {
   const { pathname } = useLocation()
   const [toggle, setToggle] = useState(pathname)
   const navigate = useNavigate()
-  
 
   const handleClick = (tog) => {
     if (tog === pathname) {

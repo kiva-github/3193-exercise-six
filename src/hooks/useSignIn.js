@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from "../utils/firebase/config";
-
+// context
 import { useAuthContext } from './useAuthContext'
 
+// firebase imports
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from "../utils/firebase/config";
 
 export const useSignIn = () => {
   const [error, setError] = useState(null)
@@ -12,10 +13,8 @@ export const useSignIn = () => {
     
   const signIn = async (email, password) => {
     setError(null)
-
     signInWithEmailAndPassword(auth, email, password)
     .then((res) => {
-      // Signed in 
       dispatch({ type: 'LOG_IN', payload: res.user})
       setError(null)
     })

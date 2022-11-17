@@ -1,11 +1,12 @@
 import { createContext, useEffect, useReducer } from "react";
 
-// firebase
+// firebase imports
 import { auth } from "../utils/firebase/config";
 
 // context
 export const AuthContext = createContext()
 
+// context reducer
 export const authReducer = (state, action) => {
     switch (action.type) {
         case 'LOG_IN':

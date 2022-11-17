@@ -10,9 +10,6 @@ import { useAuthContext } from './hooks/useAuthContext'
 import Authentication from './pages/authentication/Authentication';
 import Home from './pages/home/Home'
 
-// styles
-import './App.css';
-
 function App() {
   const { authIsReady, user } = useAuthContext()
   

@@ -1,9 +1,11 @@
 import { useState } from "react";
 
-import { auth } from "../utils/firebase/config";
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-
+// context
 import { useAuthContext } from './useAuthContext';
+
+// firebase imports
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { auth } from "../utils/firebase/config";
 
 export const useSignUp = () => {
   const [error, setError] = useState(null)
@@ -14,7 +16,6 @@ export const useSignUp = () => {
     if (password !== confirmPassword) {
       setError('Passwords do not match')
     } else {
-      console.log('Passwords match')
       createUserWithEmailAndPassword(auth, email, password)
       .then((res) => {
         updateProfile(res.user, { displayName: username })
@@ -25,8 +26,8 @@ export const useSignUp = () => {
       })
       .catch((error) => {
         setError(error)
-      });
+      })
     }
   }
-  return { signUp, error }
+  return { error, signUp }
 }

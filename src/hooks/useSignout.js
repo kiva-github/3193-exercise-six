@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-// firebase
-import { signOut } from 'firebase/auth'
-import { auth } from '../utils/firebase/config'
-
 // context
 import { useAuthContext } from './useAuthContext'
+
+// firebase imports
+import { signOut } from 'firebase/auth'
+import { auth } from '../utils/firebase/config'
 
 export const useSignout = () => {
     const [error, setError] = useState(null)
