@@ -1,0 +1,15 @@
+.create-account-container {
+    max-width: 400px;
+
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .input-field {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+}
