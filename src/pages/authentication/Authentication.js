@@ -1,14 +1,17 @@
-import { Outlet } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 
-// styles
-import './Authentication.scss'
+// components
+import CreateAccount from '../../components/create-account/CreateAccount'
+import SignIn from '../../components/sign-in/SignIn'
 
 export default function Authentication() {
+    const { toggle } = useParams()
+
     return (
-        <div className='authentication-container'>
-            <div className='form-container'>
-                <Outlet />
-            </div>
-        </div>
+        <>
+            {toggle === 'sign-in' && <SignIn />}
+            {toggle === 'create-account' && <CreateAccount />}
+            {toggle !== 'sign-in' && toggle !== 'create-account' && <Navigate to='/auth/sign-in' />}
+        </>
     )
 }

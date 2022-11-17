@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useSignUp } from '../../hooks/useSignUp'
 
 // styles
-import './CreateAccount.scss'
+import '../authStyles.scss'
 
 export default function CreateAccount() {
   const [username, setUsername] = useState('')
@@ -19,7 +19,7 @@ export default function CreateAccount() {
   }
 
   return (
-    <div className='create-account-container'>
+    <div className='auth-container'>
         <h2>Create an account</h2>
         <form className='auth-form' onSubmit={handleSubmit}>
             <div className='input-field'>

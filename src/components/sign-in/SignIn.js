@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useSignIn } from '../../hooks/useSignIn'
 
 // styles
-import './SignIn.scss'
+import '../authStyles.scss'
 
 export default function SignIn() {
   const [email, setEmail] = useState('')
@@ -17,7 +17,7 @@ export default function SignIn() {
   }
 
   return (
-    <div className='sign-in-container'>
+    <div className='auth-container'>
         <h2>Sign in</h2>
         <form className='auth-form' onSubmit={handleSubmit}>
           <div className='input-field'>

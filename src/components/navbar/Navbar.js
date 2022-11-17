@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 // context
 import { useAuthContext } from '../../hooks/useAuthContext'
@@ -10,9 +11,21 @@ import { useSignout } from '../../hooks/useSignout'
 import './Navbar.scss'
 
 export default function Navbar() {
-  const navigate = useNavigate()
   const { signout } = useSignout()
   const { user } = useAuthContext()
+  const { pathname } = useLocation()
+  const [toggle, setToggle] = useState(pathname)
+  const navigate = useNavigate()
+  
+
+  const handleClick = (tog) => {
+    if (tog === pathname) {
+      return
+    } else {
+      setToggle(tog)
+      navigate(tog)
+    }
+  }
 
   return (
     <div className='nav-container'>
@@ -20,10 +33,10 @@ export default function Navbar() {
       {user && <button onClick={signout}>Signout</button>}
       {!user &&
         <div className='nav-auth-toggle'>
-          <div className={'toggle-title'} onClick={() => navigate('/auth/sign-in')}>
+          <div className={toggle === '/auth/sign-in' ? 'toggle-title active' : 'toggle-title'} onClick={() => handleClick('/auth/sign-in')}>
             <h3>Sign in</h3>
           </div>
-          <div className='toggle-title' onClick={() => navigate('/auth/create-account')}>
+          <div className={toggle === '/auth/create-account' ? 'toggle-title active' : 'toggle-title'} onClick={() => handleClick('/auth/create-account')}>
             <h3>Create account</h3>
           </div>
         </div>
